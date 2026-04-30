@@ -12,8 +12,8 @@ double temp;
 double presshpa;
 double pressv;
 
-const char *ssid = "SSID";   //Galaxy A310B48       // Change this to your WiFi SSID
-const char *password = "Password";  // ijfn2034    // Change this to your WiFi password
+const char *ssid = "SSID";          // Change this to your WiFi SSID
+const char *password = "Password";     // Change this to your WiFi password
 const char* mqtt_server = "3.80.187.219";
 
 WiFiClient espClient;
