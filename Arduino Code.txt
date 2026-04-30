@@ -1,0 +1,108 @@
+
+
+#include <WiFi.h> // board specific wifi package
+#include <PubSubClient.h> // Found in PubSubClient3 in Arduino Library Manager - Written by Nick O'Leary
+#include <BMP180.h> // found in Arduino Library Manager - Developed by Saurav Sarjeev
+
+
+BMP180 bmp180;
+
+double press;
+double temp;
+double presshpa;
+double pressv;
+
+const char *ssid = "SSID";   //Galaxy A310B48       // Change this to your WiFi SSID
+const char *password = "Password";  // ijfn2034    // Change this to your WiFi password
+const char* mqtt_server = "3.80.187.219";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void setup() {
+  Serial.begin(115200);
+
+  bmp180.begin(); //initialize - this gets the coefficients
+  if (!bmp180.begin()) {
+    Serial.println("BMP180 not found!");
+    while (1)
+      ;
+  }else{
+    Serial.println("BMP180 Connected");
+  }
+
+  Serial.println();
+  Serial.println("******************************************************");
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  client.setServer(mqtt_server,1883);
+  client.setCallback(callback);
+
+}
+
+void reconnect() {
+  while (!client.connected()) {
+    client.connect("ESP32Client", "user","Instrumentation");
+  }
+}
+
+void loop() {
+  if (!client.connected()) 
+      reconnect();
+  client.loop();
+
+  //float value = analogRead(34);  // example sensor
+  temp = bmp180.readTemperature();
+  press = bmp180.readPressure(); // Getting the pressure
+
+  presshpa = press/100.0;
+  //presshpa = (press / 100.0) + 60.0; // initial offset
+  //presshpa = (1.0583*presshpa) - 56.239; // Calibration
+
+  char msg[50];
+  sprintf(msg, "%f", presshpa);
+  client.publish("sensor/value", msg);
+
+  char tmsg[50];
+  sprintf(tmsg, "%f", temp);
+  client.publish("sensor/values", tmsg);
+
+  Serial.print("Pressure: ");
+  Serial.print(presshpa);
+  Serial.println(" hpa");
+
+  Serial.print("Temperature: ");
+  Serial.print(temp);
+  Serial.println(" *C");
+  //Serial.print("Voltage: ");
+  //Serial.print(pressv - 1.18);
+  //Serial.println(" V");
+
+  client.subscribe("esp32/alert");
+
+  delay(250);
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  String msg = "";
+
+  for (int i = 0; i < length; i++) {
+    msg += (char)payload[i];
+  }
+
+  Serial.println("ALERT RECEIVED:");
+  Serial.println(msg);
+}
