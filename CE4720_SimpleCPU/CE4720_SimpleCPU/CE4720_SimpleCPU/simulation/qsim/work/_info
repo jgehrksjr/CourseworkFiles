@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.0sp1\CE4720_SimpleCPU\simulation\qsim
+vCE4720_SimpleCPU
+Z1 I0^@RJD2OfX5W>MkU5CkOT3
+Z2 VGIKT>^bLO2I8PMS>3K88g2
+Z3 dC:\Users\jorda\Downloads\CE4720_SimpleCPU(noreg4) (2)\CE4720_SimpleCPU(noreg4)\CE4720_SimpleCPU\simulation\qsim
+Z4 w1779213697
+Z5 8CE4720_SimpleCPU.vo
+Z6 FCE4720_SimpleCPU.vo
+L0 31
+Z7 OV;L;10.1d;51
+r1
+31
+Z8 !s90 -work|work|CE4720_SimpleCPU.vo|
+Z9 o-work work -O0
+Z10 n@c@e4720_@simple@c@p@u
+!i10b 1
+Z11 !s100 ;Bd=9l^i2:FRXO5GUGNG51
+!s85 0
+Z12 !s108 1779213701.074000
+Z13 !s107 CE4720_SimpleCPU.vo|
+!s101 -O0
+vCE4720_SimpleCPU_vlg_check_tst
+!i10b 1
+!s100 JY5AAdbHQA5UPV]zZ?2je1
+IE_U9l]iS7:55D[faNSFm>1
+Vhol`cf3kk6ChboYkfKF]:3
+R3
+Z14 w1779213696
+Z15 8CE4720_SimpleCPU.vt
+Z16 FCE4720_SimpleCPU.vt
+L0 59
+R7
+r1
+!s85 0
+31
+Z17 !s108 1779213701.240000
+Z18 !s107 CE4720_SimpleCPU.vt|
+Z19 !s90 -work|work|CE4720_SimpleCPU.vt|
+!s101 -O0
+R9
+Z20 n@c@e4720_@simple@c@p@u_vlg_check_tst
+vCE4720_SimpleCPU_vlg_sample_tst
+!i10b 1
+Z21 !s100 cAaY[R<12]be;F<F^=`[o1
+Z22 IYKFlY=7z`3P60o0oUIaF71
+Z23 VQRTJidJ_ic=EjB9j5CeC70
+R3
+R14
+R15
+R16
+L0 29
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R9
+Z24 n@c@e4720_@simple@c@p@u_vlg_sample_tst
+vCE4720_SimpleCPU_vlg_vec_tst
+!i10b 1
+!s100 NTdiHUYA;b]I7:mZ6dRQ:3
+I=TI8d?1ndJQbNo[33fc4Z0
+Z25 V5STDiJ4>58JMnd9;F>Ae23
+R3
+R14
+R15
+R16
+L0 1918
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R9
+Z26 n@c@e4720_@simple@c@p@u_vlg_vec_tst

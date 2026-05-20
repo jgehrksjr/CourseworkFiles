@@ -1,0 +1,491 @@
+|CE4720_SimpleCPU
+Clock => reg8:AC.clk
+Clock => reg4:inst5.clk
+Clock => map_logic:inst.clock
+Clock => ALUTest:inst12.clk
+Clock => reg8:DR.clk
+Clock => BusBufferSigs:inst19.clk
+Clock => PCreg8:PC.clk
+Clock => ALTMEM_INIT:inst6.clock
+Clock => reg8:AR.clk
+Clock => reg8:IR.clk
+
+
+|CE4720_SimpleCPU|reg8:AC
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+load => q[0]~reg0.ENA
+load => q[1]~reg0.ENA
+load => q[2]~reg0.ENA
+load => q[3]~reg0.ENA
+load => q[4]~reg0.ENA
+load => q[5]~reg0.ENA
+load => q[6]~reg0.ENA
+load => q[7]~reg0.ENA
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+d[4] => q[4]~reg0.DATAIN
+d[5] => q[5]~reg0.DATAIN
+d[6] => q[6]~reg0.DATAIN
+d[7] => q[7]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|microcode_rom:inst4
+uaddr[0] => Decoder0.IN2
+uaddr[0] => Decoder1.IN3
+uaddr[1] => Decoder1.IN2
+uaddr[2] => Decoder0.IN1
+uaddr[2] => Decoder1.IN1
+uaddr[3] => Decoder0.IN0
+uaddr[3] => Decoder1.IN0
+ARload <= ARload.DB_MAX_OUTPUT_PORT_TYPE
+PCinc <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+PCload <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+PCloadZ <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+DRload <= WideOr7.DB_MAX_OUTPUT_PORT_TYPE
+IRload <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+ACload <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+Zload <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+MemRead <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+MemWrite <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+BusSrc[0] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+BusSrc[1] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+BusSrc[2] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+ALUsel <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+Select <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+NextAddr[0] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+NextAddr[1] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+NextAddr[2] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+NextAddr[3] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|reg4:inst5
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|map_logic:inst
+clock => map_addr[0]~reg0.CLK
+clock => map_addr[1]~reg0.CLK
+clock => map_addr[2]~reg0.CLK
+clock => map_addr[3]~reg0.CLK
+opcode[0] => Decoder1.IN2
+opcode[1] => Decoder0.IN1
+opcode[1] => Decoder1.IN1
+opcode[1] => map_addr.DATAB
+opcode[2] => Decoder0.IN0
+opcode[2] => Decoder1.IN0
+SelectPath => map_addr.OUTPUTSELECT
+SelectPath => map_addr.OUTPUTSELECT
+SelectPath => map_addr.OUTPUTSELECT
+SelectPath => map_addr.OUTPUTSELECT
+next_addr[0] => map_addr.DATAA
+next_addr[1] => map_addr.DATAA
+next_addr[2] => map_addr.DATAA
+next_addr[3] => map_addr.DATAA
+map_addr[0] <= map_addr[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+map_addr[1] <= map_addr[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+map_addr[2] <= map_addr[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+map_addr[3] <= map_addr[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|ALUTest:inst12
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+a[0] => Add0.IN8
+a[1] => Add0.IN7
+a[2] => Add0.IN6
+a[3] => Add0.IN5
+a[4] => Add0.IN4
+a[5] => Add0.IN3
+a[6] => Add0.IN2
+a[7] => Add0.IN1
+b[0] => Add0.IN16
+b[1] => Add0.IN15
+b[2] => Add0.IN14
+b[3] => Add0.IN13
+b[4] => Add0.IN12
+b[5] => Add0.IN11
+b[6] => Add0.IN10
+b[7] => Add0.IN9
+ALUSel[0] => ~NO_FANOUT~
+ALUSel[1] => ~NO_FANOUT~
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Zflag <= <GND>
+
+
+|CE4720_SimpleCPU|reg8:DR
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+load => q[0]~reg0.ENA
+load => q[1]~reg0.ENA
+load => q[2]~reg0.ENA
+load => q[3]~reg0.ENA
+load => q[4]~reg0.ENA
+load => q[5]~reg0.ENA
+load => q[6]~reg0.ENA
+load => q[7]~reg0.ENA
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+d[4] => q[4]~reg0.DATAIN
+d[5] => q[5]~reg0.DATAIN
+d[6] => q[6]~reg0.DATAIN
+d[7] => q[7]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|BusBufferSigs:inst19
+clk => BUS_AR~reg0.CLK
+clk => BUS_ALU~reg0.CLK
+clk => BUS_MEM~reg0.CLK
+clk => BUS_AC~reg0.CLK
+clk => BUS_DR~reg0.CLK
+clk => BUS_PC~reg0.CLK
+BusSrc[0] => Decoder0.IN2
+BusSrc[1] => Decoder0.IN1
+BusSrc[2] => Decoder0.IN0
+BUS_PC <= BUS_PC~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BUS_DR <= BUS_DR~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BUS_AC <= BUS_AC~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BUS_MEM <= BUS_MEM~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BUS_ALU <= BUS_ALU~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BUS_AR <= BUS_AR~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|PCreg8:PC
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+load => always0.IN0
+Zload => always0.IN1
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+d[4] => q[4]~reg0.DATAIN
+d[5] => q[5]~reg0.DATAIN
+d[6] => q[6]~reg0.DATAIN
+d[7] => q[7]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6
+clken => ~NO_FANOUT~
+clock => meminit_q1v:auto_generated.clock
+datain[0] => meminit_q1v:auto_generated.datain[0]
+datain[1] => meminit_q1v:auto_generated.datain[1]
+datain[2] => meminit_q1v:auto_generated.datain[2]
+datain[3] => meminit_q1v:auto_generated.datain[3]
+datain[4] => meminit_q1v:auto_generated.datain[4]
+datain[5] => meminit_q1v:auto_generated.datain[5]
+datain[6] => meminit_q1v:auto_generated.datain[6]
+datain[7] => meminit_q1v:auto_generated.datain[7]
+dataout[0] <= meminit_q1v:auto_generated.dataout[0]
+dataout[1] <= meminit_q1v:auto_generated.dataout[1]
+dataout[2] <= meminit_q1v:auto_generated.dataout[2]
+dataout[3] <= meminit_q1v:auto_generated.dataout[3]
+dataout[4] <= meminit_q1v:auto_generated.dataout[4]
+dataout[5] <= meminit_q1v:auto_generated.dataout[5]
+dataout[6] <= meminit_q1v:auto_generated.dataout[6]
+dataout[7] <= meminit_q1v:auto_generated.dataout[7]
+init => meminit_q1v:auto_generated.init
+init_busy <= <GND>
+ram_address[0] <= <GND>
+ram_address[1] <= <GND>
+ram_address[2] <= <GND>
+ram_address[3] <= <GND>
+ram_address[4] <= <GND>
+ram_wren <= <GND>
+rom_address[0] <= <GND>
+rom_address[1] <= <GND>
+rom_address[2] <= <GND>
+rom_address[3] <= <GND>
+rom_address[4] <= <GND>
+rom_data_ready => ~NO_FANOUT~
+rom_rden <= <GND>
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6|meminit_q1v:auto_generated
+clock => altsyncram_kvq:int_rom.clock0
+clock => cntr_6ug:addr_ctr.clock
+clock => cntr_esg:wait_ctr.clock
+clock => capture_init[0].CLK
+clock => delay_addr[4].CLK
+clock => delay_addr[3].CLK
+clock => delay_addr[2].CLK
+clock => delay_addr[1].CLK
+clock => delay_addr[0].CLK
+clock => state_reg[2].CLK
+clock => state_reg[1].CLK
+clock => state_reg[0].CLK
+datain[0] => ~NO_FANOUT~
+datain[1] => ~NO_FANOUT~
+datain[2] => ~NO_FANOUT~
+datain[3] => ~NO_FANOUT~
+datain[4] => ~NO_FANOUT~
+datain[5] => ~NO_FANOUT~
+datain[6] => ~NO_FANOUT~
+datain[7] => ~NO_FANOUT~
+dataout[0] <= dataout_w[0].DB_MAX_OUTPUT_PORT_TYPE
+dataout[1] <= dataout_w[1].DB_MAX_OUTPUT_PORT_TYPE
+dataout[2] <= dataout_w[2].DB_MAX_OUTPUT_PORT_TYPE
+dataout[3] <= dataout_w[3].DB_MAX_OUTPUT_PORT_TYPE
+dataout[4] <= dataout_w[4].DB_MAX_OUTPUT_PORT_TYPE
+dataout[5] <= dataout_w[5].DB_MAX_OUTPUT_PORT_TYPE
+dataout[6] <= dataout_w[6].DB_MAX_OUTPUT_PORT_TYPE
+dataout[7] <= dataout_w[7].DB_MAX_OUTPUT_PORT_TYPE
+init => _.IN0
+init_busy <= capture_init[0].DB_MAX_OUTPUT_PORT_TYPE
+ram_address[0] <= delay_addr[0].DB_MAX_OUTPUT_PORT_TYPE
+ram_address[1] <= delay_addr[1].DB_MAX_OUTPUT_PORT_TYPE
+ram_address[2] <= delay_addr[2].DB_MAX_OUTPUT_PORT_TYPE
+ram_address[3] <= delay_addr[3].DB_MAX_OUTPUT_PORT_TYPE
+ram_address[4] <= delay_addr[4].DB_MAX_OUTPUT_PORT_TYPE
+ram_wren <= ram_write_state[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6|meminit_q1v:auto_generated|altsyncram_kvq:int_rom
+address_a[0] => ram_block3a0.PORTAADDR
+address_a[0] => ram_block3a1.PORTAADDR
+address_a[0] => ram_block3a2.PORTAADDR
+address_a[0] => ram_block3a3.PORTAADDR
+address_a[0] => ram_block3a4.PORTAADDR
+address_a[0] => ram_block3a5.PORTAADDR
+address_a[0] => ram_block3a6.PORTAADDR
+address_a[0] => ram_block3a7.PORTAADDR
+address_a[1] => ram_block3a0.PORTAADDR1
+address_a[1] => ram_block3a1.PORTAADDR1
+address_a[1] => ram_block3a2.PORTAADDR1
+address_a[1] => ram_block3a3.PORTAADDR1
+address_a[1] => ram_block3a4.PORTAADDR1
+address_a[1] => ram_block3a5.PORTAADDR1
+address_a[1] => ram_block3a6.PORTAADDR1
+address_a[1] => ram_block3a7.PORTAADDR1
+address_a[2] => ram_block3a0.PORTAADDR2
+address_a[2] => ram_block3a1.PORTAADDR2
+address_a[2] => ram_block3a2.PORTAADDR2
+address_a[2] => ram_block3a3.PORTAADDR2
+address_a[2] => ram_block3a4.PORTAADDR2
+address_a[2] => ram_block3a5.PORTAADDR2
+address_a[2] => ram_block3a6.PORTAADDR2
+address_a[2] => ram_block3a7.PORTAADDR2
+address_a[3] => ram_block3a0.PORTAADDR3
+address_a[3] => ram_block3a1.PORTAADDR3
+address_a[3] => ram_block3a2.PORTAADDR3
+address_a[3] => ram_block3a3.PORTAADDR3
+address_a[3] => ram_block3a4.PORTAADDR3
+address_a[3] => ram_block3a5.PORTAADDR3
+address_a[3] => ram_block3a6.PORTAADDR3
+address_a[3] => ram_block3a7.PORTAADDR3
+address_a[4] => ram_block3a0.PORTAADDR4
+address_a[4] => ram_block3a1.PORTAADDR4
+address_a[4] => ram_block3a2.PORTAADDR4
+address_a[4] => ram_block3a3.PORTAADDR4
+address_a[4] => ram_block3a4.PORTAADDR4
+address_a[4] => ram_block3a5.PORTAADDR4
+address_a[4] => ram_block3a6.PORTAADDR4
+address_a[4] => ram_block3a7.PORTAADDR4
+clock0 => ram_block3a0.CLK0
+clock0 => ram_block3a1.CLK0
+clock0 => ram_block3a2.CLK0
+clock0 => ram_block3a3.CLK0
+clock0 => ram_block3a4.CLK0
+clock0 => ram_block3a5.CLK0
+clock0 => ram_block3a6.CLK0
+clock0 => ram_block3a7.CLK0
+clocken0 => ram_block3a0.ENA0
+clocken0 => ram_block3a1.ENA0
+clocken0 => ram_block3a2.ENA0
+clocken0 => ram_block3a3.ENA0
+clocken0 => ram_block3a4.ENA0
+clocken0 => ram_block3a5.ENA0
+clocken0 => ram_block3a6.ENA0
+clocken0 => ram_block3a7.ENA0
+q_a[0] <= ram_block3a0.PORTADATAOUT
+q_a[1] <= ram_block3a1.PORTADATAOUT
+q_a[2] <= ram_block3a2.PORTADATAOUT
+q_a[3] <= ram_block3a3.PORTADATAOUT
+q_a[4] <= ram_block3a4.PORTADATAOUT
+q_a[5] <= ram_block3a5.PORTADATAOUT
+q_a[6] <= ram_block3a6.PORTADATAOUT
+q_a[7] <= ram_block3a7.PORTADATAOUT
+rden_a => ram_block3a0.PORTARE
+rden_a => ram_block3a1.PORTARE
+rden_a => ram_block3a2.PORTARE
+rden_a => ram_block3a3.PORTARE
+rden_a => ram_block3a4.PORTARE
+rden_a => ram_block3a5.PORTARE
+rden_a => ram_block3a6.PORTARE
+rden_a => ram_block3a7.PORTARE
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6|meminit_q1v:auto_generated|cntr_6ug:addr_ctr
+clk_en => counter_reg_bit[4].IN0
+clock => counter_reg_bit[4].CLK
+clock => counter_reg_bit[3].CLK
+clock => counter_reg_bit[2].CLK
+clock => counter_reg_bit[1].CLK
+clock => counter_reg_bit[0].CLK
+cnt_en => _.IN1
+q[0] <= counter_reg_bit[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= counter_reg_bit[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= counter_reg_bit[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= counter_reg_bit[3].DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= counter_reg_bit[4].DB_MAX_OUTPUT_PORT_TYPE
+sclr => _.IN0
+sclr => _.IN0
+sclr => _.IN0
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6|meminit_q1v:auto_generated|cntr_esg:wait_ctr
+clk_en => counter_reg_bit[0].IN0
+clock => counter_reg_bit[0].CLK
+cnt_en => _.IN1
+q[0] <= counter_reg_bit[0].DB_MAX_OUTPUT_PORT_TYPE
+sclr => _.IN0
+sclr => _.IN0
+sclr => _.IN0
+
+
+|CE4720_SimpleCPU|ALTMEM_INIT:inst6|meminit_q1v:auto_generated|cntr_esg:wait_ctr|cmpr_ngc:cmpr4
+aeb <= aeb_result_wire[0].DB_MAX_OUTPUT_PORT_TYPE
+dataa[0] => aneb_result_wire[0].IN0
+datab[0] => aneb_result_wire[0].IN1
+
+
+|CE4720_SimpleCPU|reg8:AR
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+load => q[0]~reg0.ENA
+load => q[1]~reg0.ENA
+load => q[2]~reg0.ENA
+load => q[3]~reg0.ENA
+load => q[4]~reg0.ENA
+load => q[5]~reg0.ENA
+load => q[6]~reg0.ENA
+load => q[7]~reg0.ENA
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+d[4] => q[4]~reg0.DATAIN
+d[5] => q[5]~reg0.DATAIN
+d[6] => q[6]~reg0.DATAIN
+d[7] => q[7]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|CE4720_SimpleCPU|reg8:IR
+clk => q[0]~reg0.CLK
+clk => q[1]~reg0.CLK
+clk => q[2]~reg0.CLK
+clk => q[3]~reg0.CLK
+clk => q[4]~reg0.CLK
+clk => q[5]~reg0.CLK
+clk => q[6]~reg0.CLK
+clk => q[7]~reg0.CLK
+load => q[0]~reg0.ENA
+load => q[1]~reg0.ENA
+load => q[2]~reg0.ENA
+load => q[3]~reg0.ENA
+load => q[4]~reg0.ENA
+load => q[5]~reg0.ENA
+load => q[6]~reg0.ENA
+load => q[7]~reg0.ENA
+d[0] => q[0]~reg0.DATAIN
+d[1] => q[1]~reg0.DATAIN
+d[2] => q[2]~reg0.DATAIN
+d[3] => q[3]~reg0.DATAIN
+d[4] => q[4]~reg0.DATAIN
+d[5] => q[5]~reg0.DATAIN
+d[6] => q[6]~reg0.DATAIN
+d[7] => q[7]~reg0.DATAIN
+q[0] <= q[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= q[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= q[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= q[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[4] <= q[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[5] <= q[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[6] <= q[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+q[7] <= q[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

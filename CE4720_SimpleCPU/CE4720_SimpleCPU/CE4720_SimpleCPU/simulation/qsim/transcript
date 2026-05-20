@@ -1,0 +1,130 @@
+# do CE4720_SimpleCPU.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module CE4720_SimpleCPU
+# 
+# Top level modules:
+# 	CE4720_SimpleCPU
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module CE4720_SimpleCPU_vlg_sample_tst
+# -- Compiling module CE4720_SimpleCPU_vlg_check_tst
+# -- Compiling module CE4720_SimpleCPU_vlg_vec_tst
+# 
+# Top level modules:
+# 	CE4720_SimpleCPU_vlg_vec_tst
+# vsim -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -t 1ps -novopt work.CE4720_SimpleCPU_vlg_vec_tst 
+# Loading work.CE4720_SimpleCPU_vlg_vec_tst
+# Loading work.CE4720_SimpleCPU
+# Loading cycloneive_ver.cycloneive_lcell_comb
+# Loading cycloneive_ver.cycloneive_clkctrl
+# Loading cycloneive_ver.cycloneive_mux41
+# Loading cycloneive_ver.cycloneive_ena_reg
+# Loading cycloneive_ver.cycloneive_io_obuf
+# Loading altera_ver.dffeas
+# Loading cycloneive_ver.cycloneive_io_ibuf
+# Loading cycloneive_ver.cycloneive_ram_block
+# Loading cycloneive_ver.cycloneive_ram_register
+# Loading cycloneive_ver.cycloneive_ram_pulse_generator
+# Loading work.CE4720_SimpleCPU_vlg_sample_tst
+# Loading work.CE4720_SimpleCPU_vlg_check_tst
+# Loading altera_ver.PRIM_GDFF_LOW
+# ERROR! Vector Mismatch for output port MuxOut[3] :: @time = 800000.000 ps
+#      Expected value = 00000
+#      Real value = 11000
+# ERROR! Vector Mismatch for output port MuxOut[4] :: @time = 800000.000 ps
+#      Expected value = 00000
+#      Real value = 11000
+# ERROR! Vector Mismatch for output port MuxOut[2] :: @time = 810000.000 ps
+#      Expected value = 00000
+#      Real value = 00100
+# ERROR! Vector Mismatch for output port MuxOut[0] :: @time = 890000.000 ps
+#      Expected value = 00000
+#      Real value = 10111
+# ERROR! Vector Mismatch for output port MuxOut[1] :: @time = 890000.000 ps
+#      Expected value = 00000
+#      Real value = 10111
+# ERROR! Vector Mismatch for output port AC_OUT[2] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 01100100
+# ERROR! Vector Mismatch for output port AC_OUT[5] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 01100100
+# ERROR! Vector Mismatch for output port AC_OUT[6] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 01100100
+# ERROR! Vector Mismatch for output port AR_IN[5] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port AR_IN[6] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port AR_IN[7] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port DR_OUT[5] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port DR_OUT[6] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port DR_OUT[7] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port IR_OUT[0] :: @time = 3000000.000 ps
+#      Expected value = 000
+#      Real value = 111
+# ERROR! Vector Mismatch for output port IR_OUT[1] :: @time = 3000000.000 ps
+#      Expected value = 000
+#      Real value = 111
+# ERROR! Vector Mismatch for output port IR_OUT[2] :: @time = 3000000.000 ps
+#      Expected value = 000
+#      Real value = 111
+# ERROR! Vector Mismatch for output port MainBus[5] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port MainBus[6] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port MainBus[7] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 11100000
+# ERROR! Vector Mismatch for output port MDenable :: @time = 3000000.000 ps
+#      Expected value = 0
+#      Real value = 1
+# ERROR! Vector Mismatch for output port PC_OUT[1] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 00010010
+# ERROR! Vector Mismatch for output port PC_OUT[4] :: @time = 3000000.000 ps
+#      Expected value = 00000000
+#      Real value = 00010010
+# ERROR! Vector Mismatch for output port Zflag :: @time = 3000000.000 ps
+#      Expected value = 0
+#      Real value = 1
+# ERROR! Vector Mismatch for output port MEM_OUT[2] :: @time = 3020000.000 ps
+#      Expected value = 00000000
+#      Real value = 00010100
+# ERROR! Vector Mismatch for output port MEM_OUT[4] :: @time = 3020000.000 ps
+#      Expected value = 00000000
+#      Real value = 00010100
+# ERROR! Vector Mismatch for output port MEM_OUT[0] :: @time = 3040000.000 ps
+#      Expected value = 00000000
+#      Real value = 01010011
+# ERROR! Vector Mismatch for output port MEM_OUT[1] :: @time = 3040000.000 ps
+#      Expected value = 00000000
+#      Real value = 01010011
+# ERROR! Vector Mismatch for output port MEM_OUT[6] :: @time = 3040000.000 ps
+#      Expected value = 00000000
+#      Real value = 01010011
+# ERROR! Vector Mismatch for output port MEM_OUT[5] :: @time = 3060000.000 ps
+#      Expected value = 00000000
+#      Real value = 00110101
+# ERROR! Vector Mismatch for output port MEM_OUT[3] :: @time = 3080000.000 ps
+#      Expected value = 00000000
+#      Real value = 00011000
+# ERROR! Vector Mismatch for output port MEM_OUT[7] :: @time = 3140000.000 ps
+#      Expected value = 00000000
+#      Real value = 10001001
+#          32 mismatched vectors : Simulation failed !
+# ** Note: $finish    : CE4720_SimpleCPU.vt(1914)
+#    Time: 10 us  Iteration: 0  Instance: /CE4720_SimpleCPU_vlg_vec_tst/tb_out

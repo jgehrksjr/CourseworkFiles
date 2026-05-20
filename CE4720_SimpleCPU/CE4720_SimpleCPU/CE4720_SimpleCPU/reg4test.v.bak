@@ -1,0 +1,9 @@
+module reg4test (
+   input 				clk,
+   input 	  [4:0]  d, 	 		//4 bit register
+   output reg [4:0]  q  	 		//4 bit output
+);
+   always @(*) begin  	//rising edge
+		q = 4'b0000;
+   end
+endmodule

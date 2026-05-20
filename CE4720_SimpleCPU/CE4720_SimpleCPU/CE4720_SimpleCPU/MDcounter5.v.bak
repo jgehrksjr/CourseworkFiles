@@ -1,0 +1,15 @@
+module MDcounter5 (
+    input clk,
+    input MDenable,
+    output reg [4:0] MDaddr
+);
+
+always @(posedge clk)
+begin
+    if (!MDenable)
+        MDaddr <= 5'b00000;
+    else
+        MDaddr <= MDaddr + 1'b1;
+end
+
+endmodule

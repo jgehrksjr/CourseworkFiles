@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="CE4720_SimpleCPU">
+		<CBX_INST_ENTRY INSTANCE_NAME="|CE4720_SimpleCPU|ALUTest:inst12|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_cui.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CE4720_SimpleCPU|MainMainBlock:inst3|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_nsi1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CE4720_SimpleCPU|MicroMem:inst6|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_l1j1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|CE4720_SimpleCPU|lpm_mux0:inst21|lpm_mux:LPM_MUX_component" CBX_FILE_NAME="mux_brc.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,144 @@
+--altmem_init CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone IV E" INIT_FILE="MainMem.MIF" INIT_TO_ZERO="NO" NUMWORDS=32 PORT_ROM_DATA_READY="PORT_CONNECTIVITY" ROM_READ_LATENCY=1 WIDTH=8 WIDTHAD=5 clock datain dataout init CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48 CYCLONEII_M4K_COMPATIBILITY="ON" LOW_POWER_MODE="AUTO"
+--VERSION_BEGIN 13.0 cbx_altmem_init 2013:06:12:18:03:43:SJ cbx_altsyncram 2013:06:12:18:03:43:SJ cbx_cycloneii 2013:06:12:18:03:43:SJ cbx_lpm_add_sub 2013:06:12:18:03:43:SJ cbx_lpm_compare 2013:06:12:18:03:43:SJ cbx_lpm_counter 2013:06:12:18:03:43:SJ cbx_lpm_decode 2013:06:12:18:03:43:SJ cbx_lpm_mux 2013:06:12:18:03:43:SJ cbx_mgl 2013:06:12:18:05:10:SJ cbx_stratix 2013:06:12:18:03:43:SJ cbx_stratixii 2013:06:12:18:03:43:SJ cbx_stratixiii 2013:06:12:18:03:43:SJ cbx_stratixv 2013:06:12:18:03:43:SJ cbx_util_mgl 2013:06:12:18:03:43:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2013 Altera Corporation
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, Altera MegaCore Function License 
+--  Agreement, or other applicable license agreement, including, 
+--  without limitation, that your use is for the sole purpose of 
+--  programming logic devices manufactured by Altera and sold by 
+--  Altera or its authorized distributors.  Please refer to the 
+--  applicable agreement for further details.
+
+
+FUNCTION altsyncram_kvq (address_a[4..0], clock0, clocken0, rden_a)
+RETURNS ( q_a[7..0]);
+FUNCTION cntr_6ug (clk_en, clock, cnt_en, sclr)
+RETURNS ( q[4..0]);
+FUNCTION cntr_esg (clk_en, clock, cnt_en, sclr)
+RETURNS ( q[0..0]);
+
+--synthesis_resources = lut 16 M9K 1 reg 15 
+SUBDESIGN meminit_q1v
+( 
+	clock	:	input;
+	datain[7..0]	:	input;
+	dataout[7..0]	:	output;
+	init	:	input;
+	init_busy	:	output;
+	ram_address[4..0]	:	output;
+	ram_wren	:	output;
+) 
+VARIABLE 
+	int_rom : altsyncram_kvq;
+	capture_init[0..0] : dffe;
+	delay_addr[4..0] : dffe;
+	state_reg[2..0] : dffeas;
+	addr_cmpr_aeb_int	:	WIRE;
+	addr_cmpr_alb_int	:	WIRE;
+	addr_cmpr_aeb	:	WIRE;
+	addr_cmpr_alb	:	WIRE;
+	addr_cmpr_dataa[4..0]	:	WIRE;
+	addr_cmpr_datab[4..0]	:	WIRE;
+	wait_cmpr_aeb_int	:	WIRE;
+	wait_cmpr_alb_int	:	WIRE;
+	wait_cmpr_aeb	:	WIRE;
+	wait_cmpr_alb	:	WIRE;
+	wait_cmpr_dataa[0..0]	:	WIRE;
+	wait_cmpr_datab[0..0]	:	WIRE;
+	addr_ctr : cntr_6ug;
+	wait_ctr : cntr_esg;
+	addrct_eq_numwords[0..0]	: WIRE;
+	addrct_lt_numwords[0..0]	: WIRE;
+	clken	: NODE;
+	dataout_w[7..0]	: WIRE;
+	done_state[0..0]	: WIRE;
+	idle_state[0..0]	: WIRE;
+	ram_write_state[0..0]	: WIRE;
+	reset_state_machine[0..0]	: WIRE;
+	rom_addr_state[0..0]	: WIRE;
+	rom_data_capture_state[0..0]	: WIRE;
+	state_machine_clken[0..0]	: WIRE;
+	waitct_eq_latency[0..0]	: WIRE;
+	waitct_lt_latency[0..0]	: WIRE;
+
+BEGIN 
+	int_rom.address_a[] = addr_ctr.q[];
+	int_rom.clock0 = clock;
+	int_rom.clocken0 = clken;
+	int_rom.rden_a = rom_data_capture_state[];
+	capture_init[].clk = clock;
+	capture_init[].d = ((init # capture_init[].q) & (! done_state[]));
+	capture_init[].ena = clken;
+	delay_addr[].clk = clock;
+	delay_addr[].d = addr_ctr.q[];
+	delay_addr[].ena = (clken & rom_data_capture_state[]);
+	state_reg[].clk = clock;
+	state_reg[].d = ( (((! state_reg[2..2].q) & state_reg[1..1].q) & state_reg[0..0].q), ((! state_reg[2..2].q) & (state_reg[1..1].q $ state_reg[0..0].q)), ((! state_reg[2..2].q) & (! state_reg[0..0].q)));
+	state_reg[].ena = state_machine_clken[];
+	state_reg[].sclr = ( reset_state_machine[], reset_state_machine[], B"0");
+	state_reg[].sload = ( B"0", B"0", reset_state_machine[]);
+	IF (addr_cmpr_dataa[] == addr_cmpr_datab[]) THEN
+		addr_cmpr_aeb_int = VCC;
+	ELSE
+		addr_cmpr_aeb_int = GND;
+	END IF;
+	IF (addr_cmpr_dataa[] < addr_cmpr_datab[]) THEN
+		addr_cmpr_alb_int = VCC;
+	ELSE
+		addr_cmpr_alb_int = GND;
+	END IF;
+	addr_cmpr_aeb = addr_cmpr_aeb_int;
+	addr_cmpr_alb = addr_cmpr_alb_int;
+	addr_cmpr_dataa[] = delay_addr[].q;
+	addr_cmpr_datab[] = B"11111";
+	IF ((0,wait_cmpr_dataa[]) == (0,wait_cmpr_datab[])) THEN
+		wait_cmpr_aeb_int = VCC;
+	ELSE
+		wait_cmpr_aeb_int = GND;
+	END IF;
+	IF ((0,wait_cmpr_dataa[]) < (0,wait_cmpr_datab[])) THEN
+		wait_cmpr_alb_int = VCC;
+	ELSE
+		wait_cmpr_alb_int = GND;
+	END IF;
+	wait_cmpr_aeb = wait_cmpr_aeb_int;
+	wait_cmpr_alb = wait_cmpr_alb_int;
+	wait_cmpr_dataa[] = wait_ctr.q[];
+	wait_cmpr_datab[] = B"0";
+	addr_ctr.clk_en = clken;
+	addr_ctr.clock = clock;
+	addr_ctr.cnt_en = ram_write_state[];
+	addr_ctr.sclr = ((! state_reg[1..1].q) & (! state_reg[0..0].q));
+	wait_ctr.clk_en = clken;
+	wait_ctr.clock = clock;
+	wait_ctr.cnt_en = rom_addr_state[];
+	wait_ctr.sclr = (! rom_addr_state[]);
+	addrct_eq_numwords[] = addr_cmpr_aeb;
+	addrct_lt_numwords[] = addr_cmpr_alb;
+	clken = VCC;
+	dataout[] = dataout_w[];
+	dataout_w[] = int_rom.q_a[];
+	done_state[] = ((state_reg[2..2].q & (! state_reg[1..1].q)) & (! state_reg[0..0].q));
+	idle_state[] = (((! state_reg[2..2].q) & (! state_reg[1..1].q)) & (! state_reg[0..0].q));
+	init_busy = capture_init[].q;
+	ram_address[] = delay_addr[].q;
+	ram_wren = ram_write_state[];
+	ram_write_state[] = (((! state_reg[2..2].q) & state_reg[1..1].q) & state_reg[0..0].q);
+	reset_state_machine[] = (ram_write_state[] & addrct_lt_numwords[]);
+	rom_addr_state[] = (((! state_reg[2..2].q) & (! state_reg[1..1].q)) & state_reg[0..0].q);
+	rom_data_capture_state[] = (((! state_reg[2..2].q) & state_reg[1..1].q) & (! state_reg[0..0].q));
+	state_machine_clken[] = (clken & ((idle_state[] & capture_init[].q) # ((rom_data_capture_state[] # done_state[]) # (capture_init[].q & (((! (rom_addr_state[] & waitct_lt_latency[])) # (rom_addr_state[] & waitct_eq_latency[])) # (ram_write_state[] & addrct_eq_numwords[]))))));
+	waitct_eq_latency[] = wait_cmpr_aeb;
+	waitct_lt_latency[] = wait_cmpr_alb;
+	ASSERT (0) 
+	REPORT "MGL_INTERNAL_WARNING: ( The parameter value is not one of the pre-specified values in the value list.) altmem_init|PORT_ROM_DATA_READY The value assigned is PORT_CONNECTIVITY and the valid value list is PORT_UNUSED|PORT_USED"
+	SEVERITY WARNING;
+END;
+--VALID FILE

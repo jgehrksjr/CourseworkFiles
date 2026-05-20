@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="CE4720_SimpleCPU">
+		<CBX_INST_ENTRY INSTANCE_NAME="|CE4720_SimpleCPU|ALTMEM_INIT:inst6" CBX_FILE_NAME="meminit_q1v.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,50 @@
+-- Copyright (C) 1991-2013 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+
+-- Quartus II generated Memory Initialization File (.mif)
+
+
+-- Micro-Memory File
+
+WIDTH=10;
+DEPTH=32;
+
+ADDRESS_RADIX=BIN;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+
+00000 : 0000000001; -- Fetch1 -> Fetch2
+00001 : 0001000010; -- Fetch2 -> Fetch3
+00010 : 0010100000; -- Fetch3 -> opcode map
+
+00100 : 0100000101; -- Load1 -> Load2
+00101 : 0101000000; -- Load2 -> Fetch1
+
+00110 : 0110000111; -- Store1 -> Store2
+00111 : 0111000000; -- Store2 -> Fetch1
+
+01000 : 1000001001; -- Add1 -> Add2
+01001 : 1001000000; -- Add2 -> Fetch1
+
+01010 : 1010001011; -- Sub1 -> Sub2
+01011 : 1011000000; -- Sub2 -> Fetch1
+
+01100 : 1100000000; -- Jump -> Fetch1
+01101 : 0000000000; --spacer
+01110 : 1110000000; -- JEQ -> Fetch1
+
+[01111..11111] : 0000000000;
+
+END;

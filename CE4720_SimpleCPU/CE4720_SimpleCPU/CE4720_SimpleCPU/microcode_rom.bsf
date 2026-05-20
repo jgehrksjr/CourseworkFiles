@@ -1,0 +1,155 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 208 352)
+	(text "microcode_rom" (rect 5 0 68 12)(font "Arial" ))
+	(text "inst" (rect 8 320 20 332)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "uaddr[4..0]" (rect 0 0 43 12)(font "Arial" ))
+		(text "uaddr[4..0]" (rect 21 27 64 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 192 32)
+		(output)
+		(text "ARload" (rect 0 0 31 12)(font "Arial" ))
+		(text "ARload" (rect 140 27 171 39)(font "Arial" ))
+		(line (pt 192 32)(pt 176 32)(line_width 1))
+	)
+	(port
+		(pt 192 48)
+		(output)
+		(text "PCinc" (rect 0 0 23 12)(font "Arial" ))
+		(text "PCinc" (rect 148 43 171 55)(font "Arial" ))
+		(line (pt 192 48)(pt 176 48)(line_width 1))
+	)
+	(port
+		(pt 192 64)
+		(output)
+		(text "PCload" (rect 0 0 28 12)(font "Arial" ))
+		(text "PCload" (rect 143 59 171 71)(font "Arial" ))
+		(line (pt 192 64)(pt 176 64)(line_width 1))
+	)
+	(port
+		(pt 192 80)
+		(output)
+		(text "PCloadZ" (rect 0 0 35 12)(font "Arial" ))
+		(text "PCloadZ" (rect 136 75 171 87)(font "Arial" ))
+		(line (pt 192 80)(pt 176 80)(line_width 1))
+	)
+	(port
+		(pt 192 96)
+		(output)
+		(text "DRload" (rect 0 0 30 12)(font "Arial" ))
+		(text "DRload" (rect 141 91 171 103)(font "Arial" ))
+		(line (pt 192 96)(pt 176 96)(line_width 1))
+	)
+	(port
+		(pt 192 112)
+		(output)
+		(text "IRload" (rect 0 0 25 12)(font "Arial" ))
+		(text "IRload" (rect 146 107 171 119)(font "Arial" ))
+		(line (pt 192 112)(pt 176 112)(line_width 1))
+	)
+	(port
+		(pt 192 128)
+		(output)
+		(text "ACload" (rect 0 0 30 12)(font "Arial" ))
+		(text "ACload" (rect 141 123 171 135)(font "Arial" ))
+		(line (pt 192 128)(pt 176 128)(line_width 1))
+	)
+	(port
+		(pt 192 144)
+		(output)
+		(text "Zload" (rect 0 0 22 12)(font "Arial" ))
+		(text "Zload" (rect 149 139 171 151)(font "Arial" ))
+		(line (pt 192 144)(pt 176 144)(line_width 1))
+	)
+	(port
+		(pt 192 160)
+		(output)
+		(text "MemRead" (rect 0 0 43 12)(font "Arial" ))
+		(text "MemRead" (rect 128 155 171 167)(font "Arial" ))
+		(line (pt 192 160)(pt 176 160)(line_width 1))
+	)
+	(port
+		(pt 192 176)
+		(output)
+		(text "MemWrite" (rect 0 0 43 12)(font "Arial" ))
+		(text "MemWrite" (rect 128 171 171 183)(font "Arial" ))
+		(line (pt 192 176)(pt 176 176)(line_width 1))
+	)
+	(port
+		(pt 192 192)
+		(output)
+		(text "PCloadAR" (rect 0 0 44 12)(font "Arial" ))
+		(text "PCloadAR" (rect 127 187 171 199)(font "Arial" ))
+		(line (pt 192 192)(pt 176 192)(line_width 1))
+	)
+	(port
+		(pt 192 208)
+		(output)
+		(text "BUS_PC" (rect 0 0 37 12)(font "Arial" ))
+		(text "BUS_PC" (rect 134 203 171 215)(font "Arial" ))
+		(line (pt 192 208)(pt 176 208)(line_width 1))
+	)
+	(port
+		(pt 192 224)
+		(output)
+		(text "BUS_DR" (rect 0 0 40 12)(font "Arial" ))
+		(text "BUS_DR" (rect 131 219 171 231)(font "Arial" ))
+		(line (pt 192 224)(pt 176 224)(line_width 1))
+	)
+	(port
+		(pt 192 240)
+		(output)
+		(text "BUS_AC" (rect 0 0 40 12)(font "Arial" ))
+		(text "BUS_AC" (rect 131 235 171 247)(font "Arial" ))
+		(line (pt 192 240)(pt 176 240)(line_width 1))
+	)
+	(port
+		(pt 192 256)
+		(output)
+		(text "BUS_MEM" (rect 0 0 48 12)(font "Arial" ))
+		(text "BUS_MEM" (rect 123 251 171 263)(font "Arial" ))
+		(line (pt 192 256)(pt 176 256)(line_width 1))
+	)
+	(port
+		(pt 192 272)
+		(output)
+		(text "BUS_ALU" (rect 0 0 46 12)(font "Arial" ))
+		(text "BUS_ALU" (rect 125 267 171 279)(font "Arial" ))
+		(line (pt 192 272)(pt 176 272)(line_width 1))
+	)
+	(port
+		(pt 192 288)
+		(output)
+		(text "ALUsel[1..0]" (rect 0 0 50 12)(font "Arial" ))
+		(text "ALUsel[1..0]" (rect 121 283 171 295)(font "Arial" ))
+		(line (pt 192 288)(pt 176 288)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 176 320)(line_width 1))
+	)
+)
