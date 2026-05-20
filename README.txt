@@ -5,3 +5,7 @@ Compile the program using the purple triangle in the toolbar. When complied, ope
 
 - Best
 Jordan, Nick, Brian, Shayne.
+
+
+The first upload. Arduino Code is the weather station code for the EE4250 Measurement and Instrumentation Final Project. 
+-Jordan

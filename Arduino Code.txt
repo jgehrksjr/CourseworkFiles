@@ -14,7 +14,7 @@ double pressv;
 
 const char *ssid = "SSID";          // Change this to your WiFi SSID
 const char *password = "Password";     // Change this to your WiFi password
-const char* mqtt_server = "3.80.187.219";
+const char* mqtt_server = "AWS Server Destination";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
